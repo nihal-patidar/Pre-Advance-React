@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Pre-React App</title>
+  <style>
+    body { font-family: Arial; padding: 20px; }
+    .hidden { display: none; }
+    button { margin: 5px; }
+  </style>
+</head>
+<body>
+
+  <h1>Dashboard</h1>
+
+  <div id="auth-section">
+    <button id="loginBtn">Login</button>
+    <button id="logoutBtn" class="hidden">Logout</button>
+  </div>
+
+  <div id="app" class="hidden">
+    <h2>Welcome, <span id="username"></span></h2>
+
+    <p>Counter: <span id="count">0</span></p>
+    <button id="inc">+</button>
+    <button id="dec">-</button>
+
+    <p id="status"></p>
+  </div>
+
+  <script>
+    /* ---------------- STATE ---------------- */
+    var state = {
+      isLoggedIn: false,
+      username: "Nihal",
+      count: 0
+    };
+
+    /* ------------- DOM REFERENCES ----------- */
+    var loginBtn = document.getElementById("loginBtn");
+    var logoutBtn = document.getElementById("logoutBtn");
+    var app = document.getElementById("app");
+    var usernameEl = document.getElementById("username");
+    var countEl = document.getElementById("count");
+    var statusEl = document.getElementById("status");
+
+    /* ------------- RENDER FUNCTIONS ---------- */
+    function renderAuth() {
+      if (state.isLoggedIn) {
+        loginBtn.classList.add("hidden");
+        logoutBtn.classList.remove("hidden");
+        app.classList.remove("hidden");
+        usernameEl.innerText = state.username;
+      } else {
+        loginBtn.classList.remove("hidden");
+        logoutBtn.classList.add("hidden");
+        app.classList.add("hidden");
+      }
+    }
+
+    function renderCount() {
+      countEl.innerText = state.count;
+
+      if (state.count > 5) {
+        statusEl.innerText = "High count!";
+      } else {
+        statusEl.innerText = "Low count";
+      }
+    }
+
+    /* ----------- EVENT HANDLERS -------------- */
+    loginBtn.onclick = function () {
+      state.isLoggedIn = true;
+      renderAuth();
+    };
+
+    logoutBtn.onclick = function () {
+      state.isLoggedIn = false;
+      renderAuth();
+    };
+
+    document.getElementById("inc").onclick = function () {
+      state.count++;
+      renderCount();
+    };
+
+    document.getElementById("dec").onclick = function () {
+      state.count--;
+      renderCount();
+    };
+
+    /* ----------- INITIAL RENDER -------------- */
+    renderAuth();
+    renderCount();
+  </script>
+
+</body>
+</html>
