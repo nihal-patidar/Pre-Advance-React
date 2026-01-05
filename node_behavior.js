@@ -6,6 +6,45 @@ const fs = require("fs");
 function handleRequest() {
   console.log("🟢 Request received");
 
+  Promise.resolve()
+    .then(() => {
+      console.log("🟡 Promise 1: decode JWT");
+    })
+    .then(() => {
+      console.log("🟡 Promise 1: fetch user permissions");
+    });
+
+  Promise.resolve()
+    .then(() => {
+      console.log("🟡 Promise 1: decode JWT");
+    })
+    .then(() => {
+      console.log("🟡 Promise 1: fetch user permissions");
+    });
+
+  Promise.resolve()
+    .then(() => {
+      console.log("🟡 Promise 2 : decode JWT");
+    })
+    .then(() => {
+      console.log("🟡 Promise 2 : fetch user permissions");
+    });
+
+  Promise.resolve()
+    .then(() => {
+      console.log("🟡 Promise 3 : decode JWT");
+    })
+    .then(() => {
+      console.log("🟡 Promise 3 : fetch user permissions");
+    });
+
+  Promise.resolve()
+    .then(() => {
+      console.log("🟡 Promise 4: decode JWT");
+    })
+    .then(() => {
+      console.log("🟡 Promise 4 : fetch user permissions");
+    });
   // 🔥 CRITICAL cleanup / validation
   process.nextTick(() => {
     console.log("🔴 process.nextTick: validate auth token");
@@ -14,10 +53,10 @@ function handleRequest() {
   // 🔹 Promise-based business logic
   Promise.resolve()
     .then(() => {
-      console.log("🟡 Promise: decode JWT");
+      console.log("🟡 Promise 2: decode JWT");
     })
     .then(() => {
-      console.log("🟡 Promise: fetch user permissions");
+      console.log("🟡 Promise 2: fetch user permissions");
     });
 
   // 🔹 Async I/O operation
@@ -43,6 +82,19 @@ function handleRequest() {
   // 🔹 Explicit post-poll execution
   setImmediate(() => {
     console.log("🟣 setImmediate: log request");
+  });
+
+  process.nextTick(() => {
+    console.log("🟢 Last process.nextTick");
+    process.nextTick(() => {
+      console.log("🟢 Last process.nextTick");
+      process.nextTick(() => {
+        console.log("🟢 Last process.nextTick");
+        process.nextTick(() => {
+          console.log("🟢 Last process.nextTick");
+        });
+      });
+    });
   });
 
   console.log("🟢 Request handler finished");
