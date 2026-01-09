@@ -1,0 +1,41 @@
+
+.container {
+    position : relative ;
+    background-color: brown;
+    height: 2000px;
+}
+
+.box {
+    background-color: aquamarine;
+    height: 200px;
+    width: 200px;
+    border: 4px solid black;
+    border-radius: 50%;
+}
+
+.box1 {
+    position : absolute ;
+    top: 0px ;
+    left: 500px;
+    background : none ;
+}
+
+
+.box2 {
+    position : sticky ;
+    /* left: 500px; */
+    top : 0px ;
+}
+
+.box3 {
+    position : fixed ;
+    top : 300px;
+    background-color: transparent;
+}
+
+
+.container2 {
+    /* position : relative ; */
+    background-color: rgb(42, 157, 165);
+    height: 2000px;
+}
