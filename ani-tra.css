@@ -1,0 +1,17 @@
+
+.box {
+    height: 200px;
+    width: 200px ;
+    position: relative;
+    /* left: 0% ; */
+    top: 0% ;
+    background-color: aquamarine;
+    transition: all 5s ease-in-out;
+}
+
+.box:hover {
+    width: 400px ;
+    top: 50% ;
+    background-color: blue;
+    border-radius: 50%;
+}
